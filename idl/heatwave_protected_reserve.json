@@ -1,0 +1,914 @@
+{
+  "address": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "metadata": {
+    "name": "heatwave_protected_reserve",
+    "version": "0.2.1",
+    "spec": "0.1.0",
+    "description": "Automatic backend-authorized HTW claim reserve prototype; no qualified deployment"
+  },
+  "instructions": [
+    {
+      "name": "claim",
+      "docs": [
+        "The player and backend game verifier sign these exact terms together.",
+        "No human reviewer is required. The program checks settlement limits and fixed",
+        "recipients; it cannot independently prove the backend's gameplay earnings."
+      ],
+      "discriminator": [
+        62,
+        198,
+        214,
+        193,
+        213,
+        159,
+        108,
+        210
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "game_verifier",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "relations": [
+            "player_state"
+          ]
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "player_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ]
+          }
+        },
+        {
+          "name": "claim_receipt",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  99,
+                  108,
+                  97,
+                  105,
+                  109
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              },
+              {
+                "kind": "arg",
+                "path": "claim_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint",
+          "address": "HKrTVBPVF9B8LEkNvZDm4PeNScnvoHv8JxNMTahVpump"
+        },
+        {
+          "name": "reserve",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "player_tokens",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "player"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "fee_tokens",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "fee_wallet"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "fee_wallet",
+          "writable": true,
+          "address": "4Efsdp2PYBseESD4oqFfe2Sm4D9Tq6fbTVm4KztxiHVz"
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "claim_id",
+          "type": {
+            "array": [
+              "u8",
+              32
+            ]
+          }
+        },
+        {
+          "name": "gross",
+          "type": "u64"
+        },
+        {
+          "name": "expires_at",
+          "type": "i64"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "docs": [
+        "Creates isolated custody. The backend key and limits have no update instruction.",
+        "There is no direct administrator withdrawal instruction. Gameplay earnings are",
+        "trusted to the backend, which can authorize fabricated claims to controlled players."
+      ],
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "creator",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "game_verifier_signer",
+          "signer": true
+        },
+        {
+          "name": "config",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  104,
+                  116,
+                  119,
+                  95,
+                  114,
+                  101,
+                  115,
+                  101,
+                  114,
+                  118,
+                  101
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "creator"
+              },
+              {
+                "kind": "arg",
+                "path": "reserve_id"
+              }
+            ]
+          }
+        },
+        {
+          "name": "authority",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config"
+              }
+            ]
+          }
+        },
+        {
+          "name": "mint",
+          "address": "HKrTVBPVF9B8LEkNvZDm4PeNScnvoHv8JxNMTahVpump"
+        },
+        {
+          "name": "reserve",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "authority"
+              },
+              {
+                "kind": "account",
+                "path": "token_program"
+              },
+              {
+                "kind": "account",
+                "path": "mint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "token_program",
+          "address": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
+        },
+        {
+          "name": "associated_token_program",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "reserve_id",
+          "type": {
+            "array": [
+              "u8",
+              16
+            ]
+          }
+        },
+        {
+          "name": "game_verifier",
+          "type": "pubkey"
+        },
+        {
+          "name": "max_claim_gross",
+          "type": "u64"
+        },
+        {
+          "name": "player_daily_cap",
+          "type": "u64"
+        },
+        {
+          "name": "global_daily_cap",
+          "type": "u64"
+        },
+        {
+          "name": "lifetime_cap",
+          "type": "u64"
+        },
+        {
+          "name": "safety_reserve",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "register_player",
+      "docs": [
+        "Registration is on-chain; a browser timestamp cannot backdate the seven-day gate."
+      ],
+      "discriminator": [
+        242,
+        146,
+        194,
+        234,
+        234,
+        145,
+        228,
+        42
+      ],
+      "accounts": [
+        {
+          "name": "player",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "config"
+        },
+        {
+          "name": "player_state",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  108,
+                  97,
+                  121,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "config"
+              },
+              {
+                "kind": "account",
+                "path": "player"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "ClaimReceipt",
+      "discriminator": [
+        223,
+        233,
+        11,
+        229,
+        124,
+        165,
+        207,
+        28
+      ]
+    },
+    {
+      "name": "PlayerState",
+      "discriminator": [
+        56,
+        3,
+        60,
+        86,
+        174,
+        16,
+        244,
+        195
+      ]
+    },
+    {
+      "name": "ReserveConfig",
+      "discriminator": [
+        83,
+        241,
+        250,
+        200,
+        116,
+        95,
+        178,
+        70
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "ClaimSettled",
+      "discriminator": [
+        144,
+        220,
+        131,
+        115,
+        8,
+        187,
+        224,
+        236
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UnexpectedAccounts",
+      "msg": "Unexpected remaining accounts"
+    },
+    {
+      "code": 6001,
+      "name": "InvalidVerifier",
+      "msg": "Verifier must be an assigned signable public key"
+    },
+    {
+      "code": 6002,
+      "name": "RoleCollision",
+      "msg": "Signing and revenue roles must be distinct"
+    },
+    {
+      "code": 6003,
+      "name": "InvalidLimits",
+      "msg": "Limits must cover at least the minimum claim and be coherent"
+    },
+    {
+      "code": 6004,
+      "name": "Arithmetic",
+      "msg": "Checked arithmetic failed"
+    },
+    {
+      "code": 6005,
+      "name": "InvalidClock",
+      "msg": "Clock or daily bucket regressed"
+    },
+    {
+      "code": 6006,
+      "name": "Expired",
+      "msg": "Claim expiry must be future and no more than 120 seconds away"
+    },
+    {
+      "code": 6007,
+      "name": "AccountTooNew",
+      "msg": "First claim requires seven days of on-chain registration"
+    },
+    {
+      "code": 6008,
+      "name": "HoldingRequired",
+      "msg": "Wallet must already hold at least 2500 HTW"
+    },
+    {
+      "code": 6009,
+      "name": "LimitExceeded",
+      "msg": "Claim exposure limit exceeded"
+    },
+    {
+      "code": 6010,
+      "name": "BackingRequired",
+      "msg": "Reserve must cover gross claim plus safety reserve"
+    },
+    {
+      "code": 6011,
+      "name": "MinimumClaim",
+      "msg": "Minimum gross claim is 100000 HTW"
+    },
+    {
+      "code": 6012,
+      "name": "InvalidTokenState",
+      "msg": "Unsupported token-account or mint state"
+    },
+    {
+      "code": 6013,
+      "name": "UnsupportedExtension",
+      "msg": "Unsupported Token-2022 extension"
+    },
+    {
+      "code": 6014,
+      "name": "ReserveAuthorityChanged",
+      "msg": "Reserve delegate or close authority is forbidden"
+    }
+  ],
+  "types": [
+    {
+      "name": "ClaimReceipt",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "config",
+            "type": "pubkey"
+          },
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "claim_id",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "gross",
+            "type": "u64"
+          },
+          {
+            "name": "fee",
+            "type": "u64"
+          },
+          {
+            "name": "settled_at",
+            "type": "i64"
+          },
+          {
+            "name": "expires_at",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ClaimSettled",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "config",
+            "type": "pubkey"
+          },
+          {
+            "name": "player",
+            "type": "pubkey"
+          },
+          {
+            "name": "claim_id",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "gross",
+            "type": "u64"
+          },
+          {
+            "name": "net",
+            "type": "u64"
+          },
+          {
+            "name": "fee",
+            "type": "u64"
+          },
+          {
+            "name": "studio_lamports",
+            "type": "u64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlayerState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "config",
+            "type": "pubkey"
+          },
+          {
+            "name": "wallet",
+            "type": "pubkey"
+          },
+          {
+            "name": "registered_at",
+            "type": "i64"
+          },
+          {
+            "name": "current_day",
+            "type": "i64"
+          },
+          {
+            "name": "daily_spent",
+            "type": "u64"
+          },
+          {
+            "name": "lifetime_spent",
+            "type": "u64"
+          },
+          {
+            "name": "claim_count",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReserveConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "reserve_id",
+            "type": {
+              "array": [
+                "u8",
+                16
+              ]
+            }
+          },
+          {
+            "name": "game_verifier",
+            "type": "pubkey"
+          },
+          {
+            "name": "max_claim_gross",
+            "type": "u64"
+          },
+          {
+            "name": "player_daily_cap",
+            "type": "u64"
+          },
+          {
+            "name": "global_daily_cap",
+            "type": "u64"
+          },
+          {
+            "name": "lifetime_cap",
+            "type": "u64"
+          },
+          {
+            "name": "safety_reserve",
+            "type": "u64"
+          },
+          {
+            "name": "current_day",
+            "type": "i64"
+          },
+          {
+            "name": "daily_spent",
+            "type": "u64"
+          },
+          {
+            "name": "lifetime_spent",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "authority_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

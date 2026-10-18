@@ -12,6 +12,8 @@ signing keys, RPC credentials and other application configuration are excluded.
 | Dependency lockfile | [`programs/protected-reserve/Cargo.lock`](programs/protected-reserve/Cargo.lock) |
 | Deployment evidence | [`docs/public/reserve-evidence.json`](docs/public/reserve-evidence.json) |
 | Build and runtime tests | [`programs/protected-reserve/README.md`](programs/protected-reserve/README.md) |
+| Generated IDL | [`idl/heatwave_protected_reserve.json`](idl/heatwave_protected_reserve.json) |
+| Reproduction result | [`verification/reproducible-build-result.json`](verification/reproducible-build-result.json) |
 
 ## How to check the seven-day rule
 
@@ -47,8 +49,13 @@ The historical deployed ELF payload is recorded as 210,168 bytes with SHA-256:
 
 Publishing source, an IDL, or an expected hash is not by itself a verified build.
 Only a successful reproducible build comparison against the deployed executable
-can establish that association. See this repository's verification results for
-the actual outcome; this initial source export does not claim an explorer badge.
+can establish that association. On October 18, 2026, the original compiler setup
+and the official `solana-verify` Docker image both reproduced the exact mainnet
+payload. All 21 runtime tests passed. See the [build result](verification/reproducible-build-result.json),
+[mainnet comparison](verification/reproduced-mainnet-comparison.json), and
+[public workflow](https://github.com/DuarteDevjs/heatwave-protected-reserve/actions/runs/39101086610).
+Explorer registration is a separate signed metadata step; these results do not
+claim that a live explorer badge has already been issued.
 
 The deployed program uses Anchor 1.1.2, Agave 4.3.0, platform-tools v1.58,
 SBPFv3, `opt-level=z`, fat LTO and the committed Cargo lockfile. These are the
@@ -71,3 +78,34 @@ guaranteed payout availability.
 An IDL describes the public instruction/account/error interface. An IDL alone
 does not prove the deployed binary, and its publication does not change the
 program or remove the seven-day requirement.
+
+## Reproduce the deployed program
+
+On Linux x86-64, run `bash scripts/setup-linux-toolchain.sh` and then
+`bash scripts/build-canonical.sh`. The compiler archives are hash-pinned and
+the build rejects any executable that differs from the recorded mainnet payload.
+With Docker installed, `bash scripts/build-otter-docker.sh` also reproduces the
+program using the official `solana-verify` CLI and a digest-pinned build image.
+These commands do not deploy or sign anything.
+
+Use Node.js 24 to independently read the current immutable executable:
+
+```sh
+node scripts/check-mainnet.mjs verification-output/heatwave_protected_reserve.so
+```
+
+The optional file argument compares your rebuilt executable byte for byte with
+finalized mainnet data. Omit it to inspect the published hash and immutability
+only. A private RPC endpoint may be supplied through `SOLANA_READONLY_RPC`;
+never commit an RPC credential. The public GitHub Actions build results are
+available under this repository's Actions tab.
+
+Generate the IDL from the unchanged crate with Anchor CLI 1.1.2:
+`bash scripts/generate-idl.sh`. The generated file includes the seven-day error.
+Its [generation result](verification/idl-generation-result.json) records the
+compiler workflow and file hash. Generation checks that Anchor has not modified
+the source or either Cargo file.
+IDL generation neither changes the deployed contract nor publishes metadata
+on-chain. Canonical IDL metadata was absent when the upgrade authority was
+removed; any new on-chain IDL must therefore use explicitly non-canonical
+metadata and identify its publishing authority.

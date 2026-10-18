@@ -1,0 +1,15 @@
+{
+  "observedAt": "2026-10-18T05:42:41.264Z",
+  "cluster": "mainnet-beta",
+  "commitment": "finalized",
+  "contextSlot": 458322483,
+  "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "programData": "HJGvwxrc4Lt9VqcvA76h4nYcBrcCZjQUrBSoaSNZKB9G",
+  "upgradeAuthority": null,
+  "lastDeploymentSlot": "457190386",
+  "elfBytes": 210168,
+  "elfSha256": "534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3",
+  "solanaVerifyTrimmedSha256": "6c0890c4b9865d15295b30100e1534f65b29f8a5351d168ffc15f0ba6728b00c",
+  "providedBinaryCompared": true,
+  "result": "matches_expected_mainnet_payload"
+}

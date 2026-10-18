@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "publicRepository": "https://github.com/DuarteDevjs/heatwave-protected-reserve",
+  "sourceCommit": "f4b260c09166a7b9367563ac42a10b47b358ce36",
+  "workflowRun": "https://github.com/DuarteDevjs/heatwave-protected-reserve/actions/runs/39101086610",
+  "nativeAndDockerByteIdentical": true,
+  "mainnetByteIdentical": true,
+  "elfBytes": 210168,
+  "elfSha256": "534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3",
+  "solanaVerifyExecutableHash": "6c0890c4b9865d15295b30100e1534f65b29f8a5351d168ffc15f0ba6728b00c",
+  "runtimeTests": {
+    "failed": 0,
+    "passed": 21,
+    "skipped": 0
+  },
+  "explorerVerificationRegistered": false,
+  "note": "Reproduction and mainnet comparison succeeded. Otter on-chain metadata and remote-service registration require the publishing wallet signature; this result does not claim a current explorer badge."
+}

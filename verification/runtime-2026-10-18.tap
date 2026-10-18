@@ -1,0 +1,34 @@
+
+> heatwave-automatic-reserve-runtime-tests@0.2.0 test
+> node --test reserve.runtime.test.mjs
+
+SBF artifact SHA256 534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3
+✔ compiled SBF initializes canonical Token-2022 custody and registers players on-chain (46.848623ms)
+✔ initialization requires the game verifier signature and its exact matching public key (28.428997ms)
+✔ automatic backend-authorized claim needs only player and game signatures and pays 97/3 plus SOL without human review (27.056057ms)
+✔ supported MetadataPointer and TokenMetadata mint extensions permit real claims (25.95389ms)
+✔ registered account cannot claim before seven days, including one second before the boundary (25.108444ms)
+✔ wallet holding is checked before payout and cannot be supplied by incoming rewards (16.433706ms)
+✔ missing game verifier signature or replacing the configured game verifier rejects without charging fees (21.870193ms)
+✔ changing signed claim terms invalidates cryptographic transaction signatures (17.108067ms)
+✔ expired, overlong and below-minimum claims reject without consuming receipts or charging (23.380837ms)
+✔ a settled claim ID cannot be replayed even with a new transaction blockhash (19.194918ms)
+✔ insufficient SOL after both token CPIs rolls back all payouts, accounting and receipt rent (16.236082ms)
+✔ reserve must cover the entire gross claim plus the configured safety reserve (18.074433ms)
+✔ per-claim and per-player daily limits bound actual SVM payouts (25.632142ms)
+✔ global daily limit applies across two distinct eligible players (21.529817ms)
+✔ lifetime cap survives day changes and stops further payouts without charging (21.315654ms)
+✔ unchanged published ELF accepts U64 MAX caps and zero safety, pays above old limits, depletes and resumes after real Token-2022 replenishment (32.925561ms)
+✔ MAX caps and zero safety preserve the minimum claim, 2500 pre-payout holding and first-claim registration age (51.874991ms)
+✔ wrong mint, fee destination, noncanonical player account and remaining accounts reject atomically (29.004567ms)
+✔ creator cannot transfer reserve tokens directly or invoke an administrator withdrawal (22.257273ms)
+✔ delegated reserve and unsupported mint extensions reject before payout (21.136929ms)
+✔ pre-funding a claim receipt PDA cannot redirect payouts or bypass claim validation (14.229458ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 679.763644
