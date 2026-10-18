@@ -13,6 +13,16 @@
     "passed": 21,
     "skipped": 0
   },
-  "explorerVerificationRegistered": false,
-  "note": "Reproduction and mainnet comparison succeeded. Otter on-chain metadata and remote-service registration require the publishing wallet signature; this result does not claim a current explorer badge."
+  "explorerVerificationRegistered": true,
+  "note": "Native and Docker reproduction match the immutable mainnet executable. The signed Otter metadata registration is finalized; the verifier reports is_verified=true and Solscan displays the verified build tied to the official public source commit. This verification does not certify off-chain gameplay earnings or constitute an independent security audit.",
+  "isVerified": true,
+  "verificationMetadataPda": "CgpzNT1T4FpvMaHf19y39eopngsUhDFNdQJvw3hRXpDd",
+  "verificationTransactionSignature": "AfG6JN4rk9Bj1KbHheGEpfaM6ZMqzekCpbK9UFkRvnJp3yaLgi5Ycyhbq4wJnVCZ1x29o3GQkvgYrMned8Dz41F",
+  "verificationFinalizedSlot": 458339328,
+  "verifierStatusUrl": "https://verify.osec.io/status/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "verifiedAt": "2026-10-18T06:46:04.743455",
+  "verificationObservedAt": "2026-10-18T06:50:18.213Z",
+  "onChainExecutableHash": "6c0890c4b9865d15295b30100e1534f65b29f8a5351d168ffc15f0ba6728b00c",
+  "solscanVerifiedBuildUrl": "https://solscan.io/account/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k#programVerification",
+  "publicationEvidence": "onchain-publication-2026-10-18.json"
 }

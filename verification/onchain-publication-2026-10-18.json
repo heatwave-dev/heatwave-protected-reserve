@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-18T06:50:18.213Z",
+  "cluster": "mainnet-beta",
+  "commitment": "finalized",
+  "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "repository": "https://github.com/heatwave-dev/heatwave-protected-reserve",
+  "sourceCommit": "9d133770662a1d0746b3644bd952291eb5089d87",
+  "publisher": "8AArjB93BF79WvxHhwHsXEqHjKBC41oNo5uCpjJa7bk1",
+  "verifiedBuild": {
+    "isVerified": true,
+    "verifierStatusUrl": "https://verify.osec.io/status/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+    "lastVerifiedAt": "2026-10-18T06:46:04.743455",
+    "executableHash": "6c0890c4b9865d15295b30100e1534f65b29f8a5351d168ffc15f0ba6728b00c",
+    "onChainHash": "6c0890c4b9865d15295b30100e1534f65b29f8a5351d168ffc15f0ba6728b00c",
+    "metadataPda": "CgpzNT1T4FpvMaHf19y39eopngsUhDFNdQJvw3hRXpDd",
+    "solscanUrl": "https://solscan.io/account/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k#programVerification"
+  },
+  "idl": {
+    "onChainPublished": true,
+    "canonical": false,
+    "metadataPda": "DDGuzBDGcsiQv4g8PK3b12Smoeb7AtaLUBuMd4bqYhLw",
+    "publisher": "8AArjB93BF79WvxHhwHsXEqHjKBC41oNo5uCpjJa7bk1",
+    "sha256": "2005bdb6be21c0850c18dd8ac13467dff20b7714337f079c72aab5c52561926c",
+    "observedSlot": 458341133,
+    "mutable": true,
+    "sevenDayError": {
+      "code": 6007,
+      "name": "AccountTooNew",
+      "message": "First claim requires seven days of on-chain registration"
+    },
+    "accountDataUrl": "https://explorer.solana.com/address/DDGuzBDGcsiQv4g8PK3b12Smoeb7AtaLUBuMd4bqYhLw/account-data"
+  },
+  "totalSpentLamports": "17799760",
+  "totalNetworkFeeLamports": "35000",
+  "htwTransfers": false,
+  "reserveProgramInvoked": false,
+  "transactions": [
+    {
+      "kind": "otter",
+      "signature": "AfG6JN4rk9Bj1KbHheGEpfaM6ZMqzekCpbK9UFkRvnJp3yaLgi5Ycyhbq4wJnVCZ1x29o3GQkvgYrMned8Dz41F",
+      "quotedLamports": "3459400",
+      "slot": 458339328,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "3459400",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "verifycLy8mB96wd9wqq3WDXQwM4oU6r42Th37Db9fC",
+        "11111111111111111111111111111111"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "2iXop2VXN4g6F75FLTZyNicsuFGQ76sjsVjnjEEBWtZmPmawU1z1Ma8wD3HFnXx7q3E1CnK6fZxZubGTo5vBYECQ",
+      "quotedLamports": "14315360",
+      "slot": 458339562,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "14315360",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "11111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "4ZisEXR9eAzSqBFp2B5PtxDXULsMdbqHCPe9CgysX4DdoH4TVv5HoyRxM5TALDzDFzgfxddocfBx9YhzdT8j8ZNv",
+      "quotedLamports": "5000",
+      "slot": 458339707,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "5000",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "2YEVRrczP7Rtx7tZixY9sB7TLM3ZWKYmxmjTJxFGfRTx6fpYGooivxrARv97vbsZfBg6BfxLR1jJPfMiwRxLeBQH",
+      "quotedLamports": "5000",
+      "slot": 458339836,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "5000",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "1A5RSHjM7NNuJ5rtwsnEXMxpwdveyyy9HQRZZTHTkV9dPSTK5xUMihrYkrjet5QMaCGKefJapf13VxUT9qLdNB1",
+      "quotedLamports": "5000",
+      "slot": 458339938,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "5000",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "4NhUK9mfhbxZP4tsiQ1ZrYVybV9cgzxDisfXV5tzGgxXTNfm5BzgLmjeyuvYUhfWDP4iorHWg17wV5RcP9H36eT4",
+      "quotedLamports": "5000",
+      "slot": 458340074,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "5000",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    },
+    {
+      "kind": "idl",
+      "signature": "22wMEU2PinhD58QwES5ioXBTDFNhbPSMcMtwQiKa8enpgi9RTGgh1KM6CpEMSjgSr53ZKZzQ5mkFqmqKgSfiS5a7",
+      "quotedLamports": "5000",
+      "slot": 458340630,
+      "confirmationStatus": "finalized",
+      "networkFeeLamports": "5000",
+      "totalSpentLamports": "5000",
+      "invokedPrograms": [
+        "ComputeBudget111111111111111111111111111111",
+        "ProgM6JCCvbYkfKqJYHePx4xxSUSqJp7rh8Lyv7nk7S"
+      ]
+    }
+  ]
+}
