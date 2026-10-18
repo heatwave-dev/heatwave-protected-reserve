@@ -53,7 +53,7 @@ can establish that association. On October 18, 2026, the original compiler setup
 and the official `solana-verify` Docker image both reproduced the exact mainnet
 payload. All 21 runtime tests passed. See the [build result](verification/reproducible-build-result.json),
 [mainnet comparison](verification/reproduced-mainnet-comparison.json), and
-[public workflow](https://github.com/DuarteDevjs/heatwave-protected-reserve/actions/runs/39101086610).
+[public workflow](https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39101086610).
 Explorer registration is a separate signed metadata step; these results do not
 claim that a live explorer badge has already been issued.
 

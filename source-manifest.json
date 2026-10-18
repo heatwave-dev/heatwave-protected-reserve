@@ -2,7 +2,7 @@
   "scope": "contract_only_public_source_export",
   "sourceSnapshotCommit": "bd1659a55d57bc0dff5c2840b8ab10598396cd70",
   "contractLastChangedCommit": "f0f08ad1d57a8debbeb6349d3446c7373727a1db",
-  "repository": "https://github.com/DuarteDevjs/heatwave-protected-reserve",
+  "repository": "https://github.com/heatwave-dev/heatwave-protected-reserve",
   "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
   "declaredBuildSettings": {
     "anchor": "1.1.2",
