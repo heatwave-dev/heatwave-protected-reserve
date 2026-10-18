@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "generationWorkflow": "https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39101515027",
-  "generationCommit": "d490595bfee093c9683e07ea3e48b528b7cb0abc",
+  "generationWorkflow": "https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39104450106",
+  "generationCommit": "9d133770662a1d0746b3644bd952291eb5089d87",
   "anchorCli": "1.1.2",
   "hostRust": "1.98.1",
   "sourcePreservedByByteComparison": true,
