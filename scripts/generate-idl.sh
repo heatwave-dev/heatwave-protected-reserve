@@ -14,10 +14,15 @@ trap 'rm -rf -- "$scratch_dir"' EXIT
 mkdir -p "$scratch_dir/programs/protected-reserve" "$(dirname "$output_file")"
 cp "$program_dir/Cargo.toml" "$program_dir/Cargo.lock" "$scratch_dir/programs/protected-reserve/"
 cp -R "$program_dir/src" "$scratch_dir/programs/protected-reserve/"
+# Anchor 1.1.2 auto-runs keys sync when the localnet entry and deploy directory
+# are absent. Suppress that bootstrap: IDL generation must not rewrite the ID.
+mkdir -p "$scratch_dir/programs/protected-reserve/target/deploy"
 cat > "$scratch_dir/Anchor.toml" <<'ANCHOR_CONFIG'
 [features]
 resolution = true
 skip-lint = false
+[programs.localnet]
+heatwave_protected_reserve = "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k"
 [programs.mainnet]
 heatwave_protected_reserve = "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k"
 [provider]
@@ -29,6 +34,9 @@ ANCHOR_CONFIG
   export NO_DNA=1
   "$anchor_bin" idl build --out "$output_file" -- --locked
 )
+cmp "$program_dir/src/lib.rs" "$scratch_dir/programs/protected-reserve/src/lib.rs"
+cmp "$program_dir/Cargo.toml" "$scratch_dir/programs/protected-reserve/Cargo.toml"
+cmp "$program_dir/Cargo.lock" "$scratch_dir/programs/protected-reserve/Cargo.lock"
 node - "$output_file" "$program_dir/src/lib.rs" <<'CHECK_IDL'
 const fs = require('node:fs');
 const crypto = require('node:crypto');
@@ -38,9 +46,6 @@ const idl = JSON.parse(bytes);
 const programId = 'Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k';
 const source = fs.readFileSync(process.argv[3], 'utf8');
 if (!source.includes(`declare_id!("${programId}");`)) throw Error('Source program mismatch');
-// Anchor's compilation-only IDL builder leaves address blank. Bind that public
-// document field to the unchanged source declaration; reject another address.
-if (idl.address === '') idl.address = programId;
 if (idl.address !== programId) throw Error(`Program mismatch: ${String(idl.address)}`);
 const expected = ['initialize', 'register_player', 'claim'];
 for (const instruction of expected) if (!idl.instructions.some(i => i.name === instruction)) throw Error(`Missing instruction: ${instruction}`);

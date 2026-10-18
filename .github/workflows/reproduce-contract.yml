@@ -8,7 +8,9 @@ on:
       - 'Cargo.lock'
       - 'src/**'
       - 'tests/**'
-      - 'scripts/**'
+      - 'scripts/setup-linux-toolchain.sh'
+      - 'scripts/build-canonical.sh'
+      - 'scripts/build-otter-docker.sh'
       - '.github/workflows/reproduce-contract.yml'
 permissions:
   contents: read
@@ -32,7 +34,7 @@ jobs:
         run: bash scripts/build-canonical.sh
       - name: Independently reproduce with official Otter Docker tooling
         run: bash scripts/build-otter-docker.sh
-      - name: Execute all 19 local SVM runtime tests against exact rebuilt ELF
+      - name: Execute all local SVM runtime tests against exact rebuilt ELF
         shell: bash
         run: |
           task_contract="$GITHUB_WORKSPACE/programs/protected-reserve"
