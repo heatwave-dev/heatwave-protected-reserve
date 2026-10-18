@@ -49,6 +49,17 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: immutable-mainnet-contract-${{ github.sha }}
-          path: verification-output/
+          # cargo-build-sbf also generates an unused local keypair in this
+          # directory. Publish only these exact public evidence files.
+          path: |
+            verification-output/heatwave_protected_reserve.so
+            verification-output/otter-docker-heatwave_protected_reserve.so
+            verification-output/binary-hashes.json
+            verification-output/elf-header.txt
+            verification-output/runtime.tap
+            verification-output/sbf-build.log
+            verification-output/solana-verify-build.log
+            verification-output/solana-verify-executable-hash.txt
+            !verification-output/**/*-keypair.json
           if-no-files-found: warn
           retention-days: 30
