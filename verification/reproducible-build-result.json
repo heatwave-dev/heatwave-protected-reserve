@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "publicRepository": "https://github.com/DuarteDevjs/heatwave-protected-reserve",
+  "publicRepository": "https://github.com/heatwave-dev/heatwave-protected-reserve",
   "sourceCommit": "f4b260c09166a7b9367563ac42a10b47b358ce36",
-  "workflowRun": "https://github.com/DuarteDevjs/heatwave-protected-reserve/actions/runs/39101086610",
+  "workflowRun": "https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39101086610",
   "nativeAndDockerByteIdentical": true,
   "mainnetByteIdentical": true,
   "elfBytes": 210168,

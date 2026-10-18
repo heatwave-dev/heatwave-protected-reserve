@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generationWorkflow": "https://github.com/DuarteDevjs/heatwave-protected-reserve/actions/runs/39101515027",
+  "generationWorkflow": "https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39101515027",
   "generationCommit": "d490595bfee093c9683e07ea3e48b528b7cb0abc",
   "anchorCli": "1.1.2",
   "hostRust": "1.98.1",
