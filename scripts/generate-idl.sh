@@ -25,7 +25,7 @@ cluster = "mainnet"
 wallet = "/nonexistent/no-wallet-needed-for-idl-build.json"
 ANCHOR_CONFIG
 (
-  cd "$scratch_dir"
+  cd "$scratch_dir/programs/protected-reserve"
   export NO_DNA=1
   "$anchor_bin" idl build --out "$output_file" -- --locked
 )
