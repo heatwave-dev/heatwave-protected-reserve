@@ -14,10 +14,19 @@ signing keys, RPC credentials and other application configuration are excluded.
 | Build and runtime tests | [`programs/protected-reserve/README.md`](programs/protected-reserve/README.md) |
 | Generated IDL | [`idl/heatwave_protected_reserve.json`](idl/heatwave_protected_reserve.json) |
 | Reproduction result | [`verification/reproducible-build-result.json`](verification/reproducible-build-result.json) |
+| Verified build on Solscan | [View verified program and source](https://solscan.io/account/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k#programVerification) |
+| Published IDL account data | [View administrator-published IDL metadata](https://explorer.solana.com/address/DDGuzBDGcsiQv4g8PK3b12Smoeb7AtaLUBuMd4bqYhLw/account-data) |
+
+On October 18, 2026, the build was registered and verified, and the IDL was
+published on Mainnet and read back with the expected SHA-256. See the
+[finalized publication evidence](verification/onchain-publication-2026-10-18.json)
+for all seven transactions: total cost **0.01779976 SOL**, zero HTW transfers,
+and no invocation of the reserve program.
 
 ## How to check the seven-day rule
 
-In `src/lib.rs`, `FIRST_CLAIM_AGE_SECONDS` is exactly `7 * 86_400`, or
+In the [verified source](https://github.com/heatwave-dev/heatwave-protected-reserve/blob/9d133770662a1d0746b3644bd952291eb5089d87/programs/protected-reserve/src/lib.rs#L18),
+`FIRST_CLAIM_AGE_SECONDS` is exactly `7 * 86_400`, or
 **604,800 seconds**. `register_player` saves `registered_at` from Solana's
 on-chain clock. Before the first successful claim (`claim_count == 0`), `claim`
 requires the on-chain time minus `registered_at` to meet that constant.
@@ -54,8 +63,11 @@ and the official `solana-verify` Docker image both reproduced the exact mainnet
 payload. All 21 runtime tests passed. See the [build result](verification/reproducible-build-result.json),
 [mainnet comparison](verification/reproduced-mainnet-comparison.json), and
 [public workflow](https://github.com/heatwave-dev/heatwave-protected-reserve/actions/runs/39104191840).
-Explorer registration is a separate signed metadata step; these results do not
-claim that a live explorer badge has already been issued.
+The subsequent signed metadata registration is finalized. The verifier reports
+`is_verified: true`, and Solscan displays the verified program and its build
+source in the [Verified Build view](https://solscan.io/account/Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k#programVerification).
+The [publication evidence](verification/onchain-publication-2026-10-18.json)
+records the metadata PDA, source commit and verifier status URL.
 
 The deployed program uses Anchor 1.1.2, Agave 4.3.0, platform-tools v1.58,
 SBPFv3, `opt-level=z`, fat LTO and the committed Cargo lockfile. These are the
@@ -105,7 +117,14 @@ Generate the IDL from the unchanged crate with Anchor CLI 1.1.2:
 Its [generation result](verification/idl-generation-result.json) records the
 compiler workflow and file hash. Generation checks that Anchor has not modified
 the source or either Cargo file.
-IDL generation neither changes the deployed contract nor publishes metadata
-on-chain. Canonical IDL metadata was absent when the upgrade authority was
-removed; any new on-chain IDL must therefore use explicitly non-canonical
-metadata and identify its publishing authority.
+The generated IDL has now been published as explicitly **non-canonical**
+metadata at `DDGuzBDGcsiQv4g8PK3b12Smoeb7AtaLUBuMd4bqYhLw`, with public publisher
+`8AArjB93BF79WvxHhwHsXEqHjKBC41oNo5uCpjJa7bk1`. Read it through the
+[Solana Explorer account-data view](https://explorer.solana.com/address/DDGuzBDGcsiQv4g8PK3b12Smoeb7AtaLUBuMd4bqYhLw/account-data)
+and compare it with the committed IDL and [read-back result](verification/idl-generation-result.json).
+
+This IDL metadata is **mutable by its administrator publisher**. It is separate
+from the immutable reserve executable: changing metadata cannot change the
+contract or its seven-day rule. Canonical IDL metadata was absent when the
+upgrade authority was removed. Non-canonical publication does not guarantee
+that every explorer automatically displays an IDL tab.
