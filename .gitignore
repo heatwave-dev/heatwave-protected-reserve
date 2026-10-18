@@ -1,0 +1,17 @@
+**/target/
+**/node_modules/
+**/test-ledger/
+.env
+.env.*
+*.keypair.json
+*-keypair.json
+*.pem
+*.key
+*.log
+.DS_Store
+Thumbs.db
+
+.build-tools/
+.build-target/
+verification-output/
+*.so

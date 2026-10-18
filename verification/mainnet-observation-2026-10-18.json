@@ -1,0 +1,13 @@
+{
+  "observedAt": "2026-10-18T05:31:05.4584231Z",
+  "commitment": "finalized",
+  "contextSlot": 458319271,
+  "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "programData": "HJGvwxrc4Lt9VqcvA76h4nYcBrcCZjQUrBSoaSNZKB9G",
+  "owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+  "upgradeAuthority": null,
+  "lastDeploymentSlot": 457190386,
+  "elfBytes": 210168,
+  "elfSha256": "534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3",
+  "accountBytes": 210213
+}

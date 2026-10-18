@@ -1,0 +1,52 @@
+name: Reproduce immutable mainnet contract
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'programs/protected-reserve/**'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - '.github/workflows/reproduce-contract.yml'
+permissions:
+  contents: read
+jobs:
+  canonical-build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    env:
+      NO_DNA: '1'
+      CARGO_BUILD_JOBS: '2'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.19.0'
+      - name: Set up isolated hash-checked compiler
+        run: bash scripts/setup-linux-toolchain.sh
+      - name: Rebuild exact deployed SBPFv3 ELF
+        run: bash scripts/build-canonical.sh
+      - name: Independently reproduce with official Otter Docker tooling
+        run: bash scripts/build-otter-docker.sh
+      - name: Execute all 19 local SVM runtime tests against exact rebuilt ELF
+        shell: bash
+        run: |
+          task_contract="$GITHUB_WORKSPACE/programs/protected-reserve"
+          if [ ! -f "$task_contract/Cargo.toml" ]; then task_contract="$GITHUB_WORKSPACE"; fi
+          cd "$task_contract/tests"
+          npm ci --ignore-scripts --no-audit --no-fund
+          set -o pipefail
+          HTW_RESERVE_SBF="$GITHUB_WORKSPACE/verification-output/heatwave_protected_reserve.so" \
+            npm test 2>&1 | tee "$GITHUB_WORKSPACE/verification-output/runtime.tap"
+      - name: Upload public build evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: immutable-mainnet-contract-${{ github.sha }}
+          path: verification-output/
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,44 @@
+name: Generate IDL from the published contract
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'programs/protected-reserve/**'
+      - 'scripts/generate-idl.sh'
+      - '.github/workflows/idl.yml'
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Use the recorded host Rust version
+        run: |
+          rustup toolchain install 1.98.1 --profile minimal
+          rustup default 1.98.1
+          rustc --version
+          cargo --version
+      - name: Install the pinned official Anchor CLI binary
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/anchor-bin"
+          curl --fail --location --retry 3 \
+            https://github.com/otter-sec/anchor/releases/download/v1.1.2/anchor-1.1.2-x86_64-unknown-linux-gnu \
+            --output "$RUNNER_TEMP/anchor-bin/anchor"
+          printf 'fdea9979629e9416e5f5e5622ff6c11b8c691d1e559581ece368e903c0c980c1  %s\n' "$RUNNER_TEMP/anchor-bin/anchor" | sha256sum --check
+          chmod +x "$RUNNER_TEMP/anchor-bin/anchor"
+          echo "$RUNNER_TEMP/anchor-bin" >> "$GITHUB_PATH"
+      - name: Generate IDL without modifying contract source
+        shell: bash
+        run: bash scripts/generate-idl.sh
+      - name: Archive generated interface
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: heatwave-protected-reserve-idl
+          path: idl/heatwave_protected_reserve.json
+          if-no-files-found: error

@@ -1,0 +1,77 @@
+{
+  "scope": "contract_only_public_source_export",
+  "sourceSnapshotCommit": "bd1659a55d57bc0dff5c2840b8ab10598396cd70",
+  "contractLastChangedCommit": "f0f08ad1d57a8debbeb6349d3446c7373727a1db",
+  "repository": "https://github.com/DuarteDevjs/heatwave-protected-reserve",
+  "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "declaredBuildSettings": {
+    "anchor": "1.1.2",
+    "agave": "4.3.0",
+    "platformTools": "v1.58",
+    "sbpfArch": "v3",
+    "optLevel": "z",
+    "lto": "fat"
+  },
+  "expectedDeployedElf": {
+    "bytes": 210168,
+    "sha256": "534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3",
+    "scope": "Historical deployment observation; not a verification-service result"
+  },
+  "files": [
+    {
+      "path": "programs/protected-reserve/.gitignore",
+      "sourceSha256": "bdbca75e8d140238547fadb8463852815d834649431ba3f322e7905a84f34d5b",
+      "exportSha256": "bdbca75e8d140238547fadb8463852815d834649431ba3f322e7905a84f34d5b",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/Cargo.lock",
+      "sourceSha256": "cb721481623340e4e1a45e26fca7807e6d0583bda077c07afc81f1ed77d55aae",
+      "exportSha256": "cb721481623340e4e1a45e26fca7807e6d0583bda077c07afc81f1ed77d55aae",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/Cargo.toml",
+      "sourceSha256": "941841f6280f0c199757506b97ccf2d31b51c2912d42cd424ff677000ba47b2f",
+      "exportSha256": "941841f6280f0c199757506b97ccf2d31b51c2912d42cd424ff677000ba47b2f",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/README.md",
+      "sourceSha256": "d5ba47d86475b80da2bda87e1d5e0ffc060ac168ddcff0bf2bb3e9f24b9f36ea",
+      "exportSha256": "92e17dcc6a501bde424afe4c0344d293e22407a2518c49c85a977047a4468606",
+      "byteIdentical": false
+    },
+    {
+      "path": "programs/protected-reserve/src/lib.rs",
+      "sourceSha256": "8b8ff26c0c5671af2b2b1a29bc724e0f62a7a8a7f3841c9ed10e0b28b93253cc",
+      "exportSha256": "8b8ff26c0c5671af2b2b1a29bc724e0f62a7a8a7f3841c9ed10e0b28b93253cc",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/tests/README.md",
+      "sourceSha256": "e8ea782d65f50c40d98e6adc69408b3c3f0c9625774a301a8dce50a489e763da",
+      "exportSha256": "a2892ebd3c12c24efbf25548d8ff6666643e6d54e785f4bbb9e6c46ada84dcf0",
+      "byteIdentical": false
+    },
+    {
+      "path": "programs/protected-reserve/tests/package-lock.json",
+      "sourceSha256": "2b8e34b5a96409ff27065e6882704112374213e9e2fb006e5cd7d4f2f74a92bf",
+      "exportSha256": "2b8e34b5a96409ff27065e6882704112374213e9e2fb006e5cd7d4f2f74a92bf",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/tests/package.json",
+      "sourceSha256": "c34b7be28928469a04df4d667bddd2e80d438606a42f66ed4fd574cc69fabff2",
+      "exportSha256": "c34b7be28928469a04df4d667bddd2e80d438606a42f66ed4fd574cc69fabff2",
+      "byteIdentical": true
+    },
+    {
+      "path": "programs/protected-reserve/tests/reserve.runtime.test.mjs",
+      "sourceSha256": "7c2dccbffdb64b087076b73fa451a30a67927c823b6d0bffda3732e75f340585",
+      "exportSha256": "7c2dccbffdb64b087076b73fa451a30a67927c823b6d0bffda3732e75f340585",
+      "byteIdentical": true
+    }
+  ],
+  "note": "Only README prose was adapted for standalone publication. Rust, Cargo manifest, Cargo lockfile and executable runtime test bytes are unchanged. No private history, wallet keys, application code or operational logs are included."
+}

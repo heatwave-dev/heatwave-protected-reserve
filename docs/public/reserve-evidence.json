@@ -1,0 +1,35 @@
+{
+  "scope": "public_deployment_evidence",
+  "observedDateUtc": "2026-10-15",
+  "isLiveBalance": false,
+  "cluster": "mainnet-beta",
+  "mint": "HKrTVBPVF9B8LEkNvZDm4PeNScnvoHv8JxNMTahVpump",
+  "tokenProgram": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+  "decimals": 6,
+  "programId": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "programData": "HJGvwxrc4Lt9VqcvA76h4nYcBrcCZjQUrBSoaSNZKB9G",
+  "configAddress": "Ee4yrRSrhc4uJVggTaMYjKDmJ1jMbH3fiEC2XV1XrH3s",
+  "reserveAuthority": "6EdMCL6v28RjoBSDn7wk2nwYb8H4w6MXM3xaW6spky8v",
+  "reserveTokenAccount": "8CBg3dSMm9YdAJL1rGgVaV8Ek3gyzNEBiktpZGe2LHX",
+  "revenueWallet": "4Efsdp2PYBseESD4oqFfe2Sm4D9Tq6fbTVm4KztxiHVz",
+  "revenueTokenAccount": "6yaFm9NeQMobWWS9wh6JMtMLcSVXzbSywQDUe9M9cW6r",
+  "upgradeAuthority": null,
+  "initialFundingAtoms": "66000000000000",
+  "deployedElfBytes": 210168,
+  "deployedElfSha256": "534f800c9c68c572dc8afb45103c9afce7ab3d8af272936b43cd04452014add3",
+  "config": {
+    "maxClaimGrossAtoms": "18446744073709551615",
+    "playerDailyCapAtoms": "18446744073709551615",
+    "globalDailyCapAtoms": "18446744073709551615",
+    "lifetimeCapAtoms": "18446744073709551615",
+    "safetyReserveAtoms": "0"
+  },
+  "transactions": [
+    {"operation": "initialize", "signature": "4heJ1bcZmAtFt3My3Bqmz3sNeCVQ8WapvK9hZvXoDKh4DTcspkyUMRb5RPpzVgVQFkfaivqmXmbr1reKBwN7BZur", "slot": 457216828, "commitment": "finalized"},
+    {"operation": "remove_upgrade_authority", "signature": "343dumdvkQnqjfs4ACJVhmqY8fsB9kXM8xG9ndVPhvFcaDerxUhmUtS7wpS15PeFBvMZv41994gmpBvA9oRbj5nR", "slot": 457217087, "commitment": "finalized"},
+    {"operation": "initial_funding", "signature": "5bG8QhsmeTkv1hT1APzhdHVbNAdA7VRRvxFvMTYKrGuNxXJNvGJQ6T4vCfwgqQoeQxrLnNkhz2gzUELzdg7WeuCi", "slot": 457217221, "commitment": "finalized"}
+  ],
+  "independentSecurityAuditClaimed": false,
+  "gameplayEarningsRequireTrustedBackend": true,
+  "sourceOfObservation": "Historical owner-signed setup observations; the public transaction signatures and finalized slots are listed in this file and reserve-and-transparency.md. Private operational records are excluded from this contract-only repository."
+}

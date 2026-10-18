@@ -1,0 +1,13 @@
+{
+  "name": "heatwave-automatic-reserve-runtime-tests",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node --test reserve.runtime.test.mjs" },
+  "devDependencies": {
+    "@solana/kit": "8.5.0",
+    "@solana-program/system": "0.15.0",
+    "@solana-program/token-2022": "0.19.0",
+    "litesvm": "1.6.0"
+  }
+}

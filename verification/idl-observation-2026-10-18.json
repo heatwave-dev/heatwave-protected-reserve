@@ -1,0 +1,14 @@
+{
+  "observedAt": "2026-10-18T05:30:54.132Z",
+  "cluster": "mainnet-beta",
+  "rpc": "https://api.mainnet-beta.solana.com",
+  "contextSlot": 458319216,
+  "program": "Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k",
+  "programData": "HJGvwxrc4Lt9VqcvA76h4nYcBrcCZjQUrBSoaSNZKB9G",
+  "lastDeployedSlot": "457190386",
+  "upgradeAuthority": null,
+  "canonicalPmpIdl": "BzPt7RjkbadWvHnqiFBYADMkqR7qxkqucjYTXh43JZbn",
+  "canonicalPmpExists": false,
+  "legacyAnchorIdl": "DD9BPcMU9no4W2JxDGhyAGuTT8tGBd8BSPbeLF74Z5b5",
+  "legacyAnchorExists": false
+}

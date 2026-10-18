@@ -1,0 +1,33 @@
+[package]
+name = "heatwave-protected-reserve"
+version = "0.2.1"
+description = "Automatic backend-authorized HTW claim reserve prototype; no qualified deployment"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "heatwave_protected_reserve"
+
+[features]
+default = []
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+anchor-debug = []
+custom-heap = []
+custom-panic = []
+
+[dependencies]
+anchor-lang = "=1.1.2"
+anchor-spl = { version = "=1.1.2", default-features = false, features = ["associated_token", "token", "token_2022"] }
+
+[workspace]
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+codegen-units = 1
+
