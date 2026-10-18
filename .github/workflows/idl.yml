@@ -37,6 +37,7 @@ jobs:
         shell: bash
         run: bash scripts/generate-idl.sh
       - name: Archive generated interface
+        if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: heatwave-protected-reserve-idl

@@ -29,16 +29,23 @@ ANCHOR_CONFIG
   export NO_DNA=1
   "$anchor_bin" idl build --out "$output_file" -- --locked
 )
-node - "$output_file" <<'CHECK_IDL'
+node - "$output_file" "$program_dir/src/lib.rs" <<'CHECK_IDL'
 const fs = require('node:fs');
 const crypto = require('node:crypto');
 const file = process.argv[2];
 const bytes = fs.readFileSync(file);
 const idl = JSON.parse(bytes);
-if (idl.address !== 'Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k') throw Error('Program mismatch');
+const programId = 'Aw3675He2MqACz3zkKi2hVEFpSdoYK5H8UG95kRoMD8k';
+const source = fs.readFileSync(process.argv[3], 'utf8');
+if (!source.includes(`declare_id!("${programId}");`)) throw Error('Source program mismatch');
+// Anchor's compilation-only IDL builder leaves address blank. Bind that public
+// document field to the unchanged source declaration; reject another address.
+if (idl.address === '') idl.address = programId;
+if (idl.address !== programId) throw Error(`Program mismatch: ${String(idl.address)}`);
 const expected = ['initialize', 'register_player', 'claim'];
 for (const instruction of expected) if (!idl.instructions.some(i => i.name === instruction)) throw Error(`Missing instruction: ${instruction}`);
 const error = idl.errors.find(e => e.name === 'AccountTooNew');
 if (error?.code !== 6007 || error?.msg !== 'First claim requires seven days of on-chain registration') throw Error('Seven-day error does not match source');
-console.log(JSON.stringify({file, sha256: crypto.createHash('sha256').update(bytes).digest('hex'), instructions: idl.instructions.map(i => i.name), sevenDayError: error}, null, 2));
+fs.writeFileSync(file, `${JSON.stringify(idl, null, 2)}\n`);
+console.log(JSON.stringify({file, sha256: crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex'), instructions: idl.instructions.map(i => i.name), sevenDayError: error}, null, 2));
 CHECK_IDL
